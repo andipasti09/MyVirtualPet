@@ -1,0 +1,16 @@
+G:\VisualStudioProjects\MediaTonicTest\MediaTonicTest\bin\Debug\netcoreapp2.1\MyVirtualPet.deps.json
+G:\VisualStudioProjects\MediaTonicTest\MediaTonicTest\bin\Debug\netcoreapp2.1\MyVirtualPet.runtimeconfig.json
+G:\VisualStudioProjects\MediaTonicTest\MediaTonicTest\bin\Debug\netcoreapp2.1\MyVirtualPet.runtimeconfig.dev.json
+G:\VisualStudioProjects\MediaTonicTest\MediaTonicTest\bin\Debug\netcoreapp2.1\MyVirtualPet.dll
+G:\VisualStudioProjects\MediaTonicTest\MediaTonicTest\obj\Debug\netcoreapp2.1\MyVirtualPet.csprojAssemblyReference.cache
+G:\VisualStudioProjects\MediaTonicTest\MediaTonicTest\obj\Debug\netcoreapp2.1\MyVirtualPet.RazorAssemblyInfo.cache
+G:\VisualStudioProjects\MediaTonicTest\MediaTonicTest\obj\Debug\netcoreapp2.1\MyVirtualPet.RazorAssemblyInfo.cs
+G:\VisualStudioProjects\MediaTonicTest\MediaTonicTest\obj\Debug\netcoreapp2.1\MyVirtualPet.AssemblyInfoInputs.cache
+G:\VisualStudioProjects\MediaTonicTest\MediaTonicTest\obj\Debug\netcoreapp2.1\MyVirtualPet.AssemblyInfo.cs
+G:\VisualStudioProjects\MediaTonicTest\MediaTonicTest\obj\Debug\netcoreapp2.1\MyVirtualPet.RazorTargetAssemblyInfo.cache
+G:\VisualStudioProjects\MediaTonicTest\MediaTonicTest\bin\Debug\netcoreapp2.1\MyVirtualPet.pdb
+G:\VisualStudioProjects\MediaTonicTest\MediaTonicTest\obj\Debug\netcoreapp2.1\MyVirtualPet.dll
+G:\VisualStudioProjects\MediaTonicTest\MediaTonicTest\obj\Debug\netcoreapp2.1\MyVirtualPet.pdb
+G:\VisualStudioProjects\MediaTonicTest\MediaTonicTest\bin\Debug\netcoreapp2.1\appsettings.Development.json
+G:\VisualStudioProjects\MediaTonicTest\MediaTonicTest\bin\Debug\netcoreapp2.1\appsettings.json
+G:\VisualStudioProjects\MediaTonicTest\MediaTonicTest\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
