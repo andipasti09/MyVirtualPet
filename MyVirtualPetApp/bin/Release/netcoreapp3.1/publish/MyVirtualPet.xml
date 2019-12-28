@@ -1,0 +1,358 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyVirtualPet</name>
+    </assembly>
+    <members>
+        <member name="T:MyVirtualPet.Controllers.AnimalRequest">
+            <summary>
+            This is a dto for creating an animal.
+            </summary>
+            <remarks>As animal is an abstract class, a instantiation of this class is not possible</remarks>
+        </member>
+        <member name="T:MyVirtualPet.Controllers.AnimalsController">
+            <summary>
+            A REST controller to handle requests for Animals Resources.
+            </summary>
+        </member>
+        <member name="M:MyVirtualPet.Controllers.AnimalsController.Get(System.UInt64)">
+            <summary>
+            Gets all pets registered by a user
+            </summary>
+            <param name="userId">the user id as query parameter</param>
+            <returns>a list of animals</returns>
+            <response code="400">when the user id is not set in the request</response>
+        </member>
+        <member name="M:MyVirtualPet.Controllers.AnimalsController.Get(System.Int32)">
+            <summary>
+            Gets an animal from the app with the given id
+            </summary>
+            <param name="id">the id of the animal</param>
+            <returns>the animal with the given id
+            Example:
+            {
+             "hunger": 0,
+             "happy": 0,
+             "id": 1,
+             "userId": 1,
+             "name": "Cat",
+             "animalTypus": "Cat"
+            }
+            </returns>
+            <response code="200">when the animal was found</response>
+            <response code="404">when no animal with the given id was found</response>
+        </member>
+        <member name="M:MyVirtualPet.Controllers.AnimalsController.Post(MyVirtualPet.Controllers.AnimalRequest)">
+            <summary>
+            Creates a virtual animal in the app for a user.
+            </summary>
+            <remarks>
+            Sample request:
+            
+            POST /Animals
+            {
+             "type": 0,
+             "name": "Cat",
+             "userId": 1
+            }
+            </remarks>
+            <param name="animalRequest"></param>
+            <returns>a newly created Animal</returns>
+            <response code="201">when the animal could be created</response>
+            <response code="400">when the animal could not be created because of wrong user input</response>
+        </member>
+        <member name="M:MyVirtualPet.Controllers.AnimalsController.Feed(System.Int32)">
+            <summary>
+            Calling this patch method feeds the animal, decreasing the hunger index 
+            </summary>
+            <param name="id">the animal id</param>
+            <returns>the updated animal</returns>
+            <response code="200">when the action was successful</response>
+            <response code="404">when the animal with the given id could not be found</response>
+        </member>
+        <member name="M:MyVirtualPet.Controllers.AnimalsController.Stroke(System.Int32)">
+            <summary>
+            This patch method strokes the animal and increases the happy index
+            </summary>
+            <param name="id">the animal id</param>
+            <returns>the updated animal</returns>
+            <response code="200">when the action was successful</response>
+            <response code="404">when the animal with the given id could not be found</response>
+        </member>
+        <member name="T:MyVirtualPet.Controllers.UsersController">
+            <summary>
+            REST controller for handling the "user" resource.
+            It uses the UserService by dependency injection.
+            </summary>
+        </member>
+        <member name="M:MyVirtualPet.Controllers.UsersController.Get">
+            <summary>
+            Gets all users from the app
+            </summary>
+            <returns>a list of users</returns>
+        </member>
+        <member name="M:MyVirtualPet.Controllers.UsersController.Get(System.UInt64)">
+            <summary>
+            Gets a specific user
+            </summary>
+            <param name="id">the id of the user given by the create request</param>
+            <returns>the user entity</returns>
+            <response code="200">if user was found</response>
+            <response code="404">if user was not found</response>
+        </member>
+        <member name="M:MyVirtualPet.Controllers.UsersController.CreateUser(MyVirtualPet.Models.User)">
+             <summary>
+             Adds a new user to the app.
+             </summary>
+             <remarks>Sample:
+             {
+             "accountName": "andy"
+             }
+            </remarks>
+             <param name="user">the user entity with the desired name</param>
+             <returns>the newly created user</returns>
+             <response code="201">when user could be created. The location header points to the path of the new resource</response>
+             <response code="400">when user creation failed</response>
+        </member>
+        <member name="T:MyVirtualPet.Services.IDatabaseService">
+            <summary>
+            Interface for abstracting the underlaying database
+            </summary>
+        </member>
+        <member name="M:MyVirtualPet.Services.IDatabaseService.GetUser(System.UInt64)">
+            <summary>
+            Gets a user with the given id
+            </summary>
+            <param name="id">the user id</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyVirtualPet.Services.IDatabaseService.GetAllUsers">
+            <summary>
+            Returns all users
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyVirtualPet.Services.IDatabaseService.AddUser(MyVirtualPet.Models.User)">
+            <summary>
+            Adds a user to the database. It needs to handle the auto-incremention of the key.
+            </summary>
+            <param name="user">the user entity, probably without id</param>
+            <returns>the newly created user</returns>
+        </member>
+        <member name="M:MyVirtualPet.Services.IDatabaseService.AddAnimal(MyVirtualPet.Models.Animal)">
+            <summary>
+            Saves an animal.
+            </summary>
+            <param name="animal">the animal entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyVirtualPet.Services.IDatabaseService.GetAnimal(System.Int32)">
+            <summary>
+            Finds one specific animal
+            </summary>
+            <param name="id">the id of the animal</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyVirtualPet.Services.IDatabaseService.GetAllAnimals">
+            <summary>
+            Gets all registered animals
+            </summary>
+            <returns>a list of type <c>Animal</c></returns>
+        </member>
+        <member name="M:MyVirtualPet.Services.IDatabaseService.UpdateAnimal(MyVirtualPet.Models.Animal)">
+            <summary>
+            Updates an animal entity
+            </summary>
+            <param name="animal">the new version of the <c>Animal</c></param>
+        </member>
+        <member name="T:MyVirtualPet.Services.InMemoryDatabaseService">
+            <summary>
+            This class serves as a in-memory storage for all models, instead of connecting to a real database.
+            If the service is shut down, no entries are saved.
+            
+            Implements the interface <c>IDatabaseService</c> to be swapped easily with a different database layer.
+            Should be used as singleton in whole application.
+            </summary>
+        </member>
+        <member name="M:MyVirtualPet.Services.InMemoryDatabaseService.AddUser(MyVirtualPet.Models.User)">
+            <summary>
+            Adds a user to the "database". The id is generated incrementally like a database would do it
+            </summary>
+            <param name="user">the <c>User</c> model</param>
+            <returns>the saved <c>User</c> model with updated id.</returns>
+        </member>
+        <member name="T:MyVirtualPet.Services.AnimalMetricsJob">
+            <summary>
+            This background service calculates the metrics of all available animals in the service
+            </summary>
+            <remarks>This services creates a running thread to calculate the animals' metrics.
+            That means one thread handles all animals.
+            Another approach would have been to use a scheduler like Quartz.NET</remarks>
+        </member>
+        <member name="T:MyVirtualPet.Services.AnimalService">
+            <summary>
+            Implementation of <c>IAnimalService</c>. Serves as a service layer between the REST controller and the database.
+            </summary>
+        </member>
+        <member name="M:MyVirtualPet.Services.AnimalService.AddAnimal(MyVirtualPet.Controllers.AnimalRequest)">
+            <summary>
+            Creates a new animal for a user based on the <c>AnimalRequest</c>.
+            The enum value given there for the type of animal determines what kind of animal class is created
+            </summary>
+            <param name="animalRequest">the request that contains which type of animal and for which user.</param>
+            <returns>the new <c>Animal</c> entity</returns>
+        </member>
+        <member name="M:MyVirtualPet.Services.AnimalService.GetAnimalsOfUser(System.UInt64)">
+            <summary>
+            Gets only the animals of one user.
+            With a real database this would be smarter to realize
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyVirtualPet.Services.IAnimalService.AddAnimal(MyVirtualPet.Controllers.AnimalRequest)">
+            <summary>
+            Adds an animal to the database
+            </summary>
+            <param name="animalRequest">the <c>animalRequest</c> object that holds the parameters</param>
+            <returns>the newly created animals</returns>
+        </member>
+        <member name="M:MyVirtualPet.Services.IAnimalService.GetAllAnimals">
+            <summary>
+            Gets a list of all saved animals.
+            </summary>
+            <returns>a <list type="Animal">the animal list</list> </returns>
+        </member>
+        <member name="M:MyVirtualPet.Services.IAnimalService.GetAnimal(System.Int32)">
+            <summary>
+            Gets an animal for the given id
+            </summary>
+            <param name="animalId">the internal id of the animal</param>
+        </member>
+        <member name="M:MyVirtualPet.Services.IAnimalService.GetAnimalsOfUser(System.UInt64)">
+            <summary>
+            Gets all <c>Animals</c> of a <c>User</c>
+            </summary>
+            <param name="userId">the internal user id</param>
+        </member>
+        <member name="M:MyVirtualPet.Services.IAnimalService.StrokeAnimal(System.Int32)">
+            <summary>
+            Stroke an animal to make it more happier
+            </summary>
+            <param name="animalId">animal's id</param>
+            <returns>The updated animal</returns>
+        </member>
+        <member name="M:MyVirtualPet.Services.IAnimalService.FeedAnimal(System.Int32)">
+            <summary>
+            Feed the animal to make it less hungry
+            </summary>
+            <param name="animalId">animal's id</param>
+            <returns>The updated animal</returns>
+        </member>
+        <member name="M:MyVirtualPet.Services.IAnimalService.UpdateAnimal(MyVirtualPet.Models.Animal)">
+            <summary>
+            Updates an animal entity, e.g. when parameters were calculated.
+            </summary>
+            <param name="animal">the <c>Animal</c> entity</param>
+            <returns></returns>
+        </member>
+        <member name="T:MyVirtualPet.Services.IUserService">
+            <summary>
+            Interface for a service to create and read Users. Deleting them is not yet supported.
+            </summary>
+        </member>
+        <member name="M:MyVirtualPet.Services.IUserService.GetUser(System.UInt64)">
+            <summary>
+            Returns the user with the given unique id.
+            </summary>
+            <param name="id">the user's id</param>
+            <returns>the <c>User</c> entity</returns>
+        </member>
+        <member name="M:MyVirtualPet.Services.IUserService.GetUsers">
+            <summary>
+            Returns all users in the service app.
+            </summary>
+            <returns>a List of <c>User</c></returns>
+        </member>
+        <member name="M:MyVirtualPet.Services.IUserService.CreateUser(MyVirtualPet.Models.User)">
+            <summary>
+            Creates a new user in the service.
+            Users shall have a valid and unique account name, this is checked before creating them.
+            </summary>
+            <param name="user">The partial user entity to create inside the service. The user's ID will be generated by the database.</param>
+            <returns>The updated <c>User</c> entity</returns>
+        </member>
+        <member name="T:MyVirtualPet.Services.UserService">
+            <summary>
+            The UserService manages all user related features, like e.g. creating a new user.
+            </summary>
+        </member>
+        <member name="T:MyVirtualPet.Models.Animal">
+            <summary>
+            An abstract class to represent an Animal owned by a user. The real animals are classes inherited from this one.
+            Animals have several metrics like Hunger which increases over time, as well as happiness decreasing. 
+            The animal can be interacted with to enhance those metrics.
+            </summary>
+            <remarks>
+            Hunger could have named repletion to have "increasing" and "decreasing" of both features the same effect, but would be harder to understand. 
+            Hunger is more obvious; so beware the opposite meaning of those values
+            </remarks>
+        </member>
+        <member name="T:MyVirtualPet.Models.Animal.AnimalType">
+            <summary>
+            An enum defining all possible types of animals that could be created
+            </summary>
+        </member>
+        <member name="P:MyVirtualPet.Models.Animal.Hunger">
+            <summary>
+            The animal's current hunger value. Minus values are good.
+            </summary>
+        </member>
+        <member name="P:MyVirtualPet.Models.Animal.Happy">
+            <summary>
+            The animal's current happy value. Positive values are good.
+            </summary>
+        </member>
+        <member name="P:MyVirtualPet.Models.Animal.ID">
+            <summary>
+            Unique identifier along all animals
+            </summary>
+        </member>
+        <member name="P:MyVirtualPet.Models.Animal.UserId">
+            <summary>
+            The User this animal belongs to
+            </summary>
+        </member>
+        <member name="P:MyVirtualPet.Models.Animal.Name">
+            <summary>
+            The animal needs to have a non blank name.
+            </summary>
+        </member>
+        <member name="P:MyVirtualPet.Models.Animal.AnimalTypus">
+            <summary>
+            The type of animal as string representation. See <see cref="T:MyVirtualPet.Models.Animal.AnimalType"/>
+            </summary>
+        </member>
+        <member name="T:MyVirtualPet.Models.Cat">
+            <summary>
+            A cat is a possible instance of an <c>Animal</c>
+            </summary>
+        </member>
+        <member name="T:MyVirtualPet.Models.Dog">
+            <summary>
+            A Dog as a possible instance of an Animal.
+            </summary>
+        </member>
+        <member name="T:MyVirtualPet.Models.Parrot">
+            <summary>
+            A Parrot is an instance of an <c>Animal</c>. It gets unhappy pretty fast, so it needs a lot of attention.
+            </summary>
+        </member>
+        <member name="T:MyVirtualPet.Models.User">
+            <summary>
+            Represents a person with internal ID and public account name that can own several animals to play with.
+            The relation between user and animal is modelled in class <c>Animal</c>.
+            </summary>
+        </member>
+    </members>
+</doc>
