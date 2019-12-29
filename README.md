@@ -20,6 +20,7 @@ NOTE: it is required that .DOT 3.1 Framework is installed
 * alternatively you can use e.g. Postman to send your own requests
 
 NOTE: if you use Postman, make sure to deactivate "ssl certificate verification" under "File -> Settings" for testing.
+The base URL for the app is then https://localhost:5001/api 
 
 The usual workflow for the app is:
 1. Create new user
@@ -79,7 +80,7 @@ DELETE methods were not implemented so far, you don't want to give your pet away
 The app is implemented in C# .NET with .NET Core 3.1.
 
 The architecture is based on a 3-layer model.
-The api controller layer receives requests fom clients and processes them, as well as converting responses from the service layer to the client. For simplicity, authentication and authorization was not considered so far.
+The api controller layer receives requests fom clients and processes them, as well as converting responses from the service layer to the client. For simplicity, authentication and authorization were not considered so far.
 
 The service layer contains classes that contain the functional logic of the app and connect the controller layer with the database.
 All classes are not hard-wired, but are loosely coupled by dependency injection.
@@ -94,6 +95,18 @@ AnimalsController:
 instead of PUT for actions on animals I decided to use the PATCH method, as PUT by definition should contain the whole entity. In this case it could lead to errors as the metrics are calculated by the service and not by the client.
 PATCH can be used for incremental updates then.
 
-### AnimalRequest class
+In future a better exception handling (like global exception filters) could be introduced. Session handling was also omitted so far.
+
+### AnimalRequest Data Transfer Object
 The class "Animal" is abstract, so there is no way to create an instance of it by expecting this class as request body in the POST method.
 I decided to go for a "factory pattern" in the AnimalService class. Based on the given type enum value, the corresponding derived animal class is instantiated.
+
+### Calculation job as BackgroundService
+I decided to have one background job for all animals instead of one job per each animal. The reason is that this job consumes only one thread whereas 100.000 animals would create the same amount of threads which is impossible to execute on one machine.
+An execution of a loop with 100.000 animals is only a matter of seconds.
+
+Instead of using a thread with sleep to delay the execution, a scheduler could have been used. I tried NCron before but didn't suit me, next alternative could be Quartz.NET
+
+### Animal class and sub-classes
+All values for the calculations are hard-coded, for a production-ready release they should be configured in a property file.
+Every animal works the same, so they are just placeholder for their properties
