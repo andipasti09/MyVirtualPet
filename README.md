@@ -89,6 +89,7 @@ There is also a derivation of a Microsoft.Extensions.Hosting.BackgroundService t
 The database layer is in-memory, modelled with some dictionaries for easier prototyping. This could be swapped in future.
 
 The tests are organized in a separate project "XUnitTestMyVirtualPet" and written with Xunit, for mocking the library "Moq" was used.
+Recently I added some acceptance tests via the framework Specflow, though the tests could have some improvements.
 
 ### API Controller 
 AnimalsController:
