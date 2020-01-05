@@ -178,3 +178,15 @@ G:\VisualStudioProjects\MyVirtualPet\XUnitTestMyVirtualPet\obj\Release\netcoreap
 G:\VisualStudioProjects\MyVirtualPet\XUnitTestMyVirtualPet\obj\Release\netcoreapp3.1\XUnitTestMyVirtualPet.csproj.CopyComplete
 G:\VisualStudioProjects\MyVirtualPet\XUnitTestMyVirtualPet\obj\Release\netcoreapp3.1\XUnitTestMyVirtualPet.dll
 G:\VisualStudioProjects\MyVirtualPet\XUnitTestMyVirtualPet\obj\Release\netcoreapp3.1\XUnitTestMyVirtualPet.pdb
+G:\VisualStudioProjects\MyVirtualPet\XUnitTestMyVirtualPet\bin\Release\netcoreapp3.1\BoDi.dll
+G:\VisualStudioProjects\MyVirtualPet\XUnitTestMyVirtualPet\bin\Release\netcoreapp3.1\Cucumber.Messages.dll
+G:\VisualStudioProjects\MyVirtualPet\XUnitTestMyVirtualPet\bin\Release\netcoreapp3.1\Gherkin.dll
+G:\VisualStudioProjects\MyVirtualPet\XUnitTestMyVirtualPet\bin\Release\netcoreapp3.1\Google.Protobuf.dll
+G:\VisualStudioProjects\MyVirtualPet\XUnitTestMyVirtualPet\bin\Release\netcoreapp3.1\TechTalk.SpecFlow.dll
+G:\VisualStudioProjects\MyVirtualPet\XUnitTestMyVirtualPet\bin\Release\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+G:\VisualStudioProjects\MyVirtualPet\XUnitTestMyVirtualPet\bin\Release\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+G:\VisualStudioProjects\MyVirtualPet\XUnitTestMyVirtualPet\bin\Release\netcoreapp3.1\Utf8Json.dll
+G:\VisualStudioProjects\MyVirtualPet\XUnitTestMyVirtualPet\bin\Release\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+G:\VisualStudioProjects\MyVirtualPet\XUnitTestMyVirtualPet\bin\Release\netcoreapp3.1\TechTalk.SpecFlow.xUnit.SpecFlowPlugin.dll
+G:\VisualStudioProjects\MyVirtualPet\XUnitTestMyVirtualPet\bin\Release\netcoreapp3.1\Validation.dll
+G:\VisualStudioProjects\MyVirtualPet\XUnitTestMyVirtualPet\bin\Release\netcoreapp3.1\Xunit.SkippableFact.dll

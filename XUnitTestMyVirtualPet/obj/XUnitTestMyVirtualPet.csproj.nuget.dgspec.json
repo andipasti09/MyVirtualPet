@@ -129,6 +129,18 @@
               "target": "Package",
               "version": "[4.13.1, )"
             },
+            "SpecFlow": {
+              "target": "Package",
+              "version": "[3.1.74, )"
+            },
+            "SpecFlow.Tools.MsBuild.Generation": {
+              "target": "Package",
+              "version": "[3.1.74, )"
+            },
+            "SpecFlow.xUnit": {
+              "target": "Package",
+              "version": "[3.1.74, )"
+            },
             "coverlet.collector": {
               "target": "Package",
               "version": "[1.0.1, )"

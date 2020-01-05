@@ -97,3 +97,4 @@ G:\VisualStudioProjects\MyVirtualPet\MyVirtualPetApp\obj\Release\netcoreapp3.1\M
 G:\VisualStudioProjects\MyVirtualPet\MyVirtualPetApp\obj\Release\netcoreapp3.1\MyVirtualPet.dll
 G:\VisualStudioProjects\MyVirtualPet\MyVirtualPetApp\obj\Release\netcoreapp3.1\MyVirtualPet.xml
 G:\VisualStudioProjects\MyVirtualPet\MyVirtualPetApp\obj\Release\netcoreapp3.1\MyVirtualPet.pdb
+G:\VisualStudioProjects\MyVirtualPet\MyVirtualPetApp\obj\Release\netcoreapp3.1\MyVirtualPet.csprojAssemblyReference.cache
