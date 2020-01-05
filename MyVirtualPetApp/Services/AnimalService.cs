@@ -34,7 +34,6 @@ namespace MyVirtualPet.Services
         {
             assertUserExists(animalRequest);
 
-            //int type = animalRequest.Type;
             //TODO: better with string instead of enum numbers?
             Animal.AnimalType animalType = animalRequest.Type; //(Animal.AnimalType)Enum.ToObject(typeof(Animal.AnimalType), type);
 
